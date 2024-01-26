@@ -1,3 +1,6 @@
+const containerDiv = document.querySelector('.container')
+let columns = document.querySelectorAll('.column');
+
 //create Variabe that links to 'body' of html 
 const body = document.querySelector('body');
 
@@ -6,32 +9,15 @@ const header = document.createElement('div');
 header.classList.add('header');
 body.appendChild(header);
 
-//Text input box instructions
-header.textContent = "Grid Size: ";
-
-//create a Text Input Box to 'selectSize'
-let input = document.createElement('input');
-input.classList.add('input');
-input.setAttribute('type','text');
-input.setAttribute('value','16');
-header.appendChild(input);
-
 //Create Submit button to finalize select size input
 const btnSubmit = document.createElement('button')
-btnSubmit.textContent = "Submit";
+btnSubmit.textContent = "Change Grid Size";
 header.appendChild(btnSubmit);
-
-//create a middle div 'container' to accomodate grid
-const container = document.createElement('div');
-container.classList.add('container');
-body.appendChild(container);
 
 //create footer div for button options ( black,rainbow, reset)
 const buttons = document.createElement('div')
 buttons.classList.add('buttons');
 body.appendChild(buttons);
-//starter value for create grid --> 16x16
-const value = 16;
 
 //create button options
 const btnBlack = document.createElement('button');
@@ -46,22 +32,93 @@ const btnClear = document.createElement('button');
 btnClear.textContent = "Clear";
 buttons.appendChild(btnClear);
 
+
+
 //create grid formula
 function createGrid (value) {
  for( let i = 0; i < value; i++) {
     let row = document.createElement('div');
     row.classList.add('row');
-    container.appendChild(row);
+    containerDiv.appendChild(row);
     for (let j = 0; j < value; j++) {
-        let column = document.createElement('row');
+        let column = document.createElement('div');
         column.classList.add('column')
         row.appendChild(column);
     }
   }
 }
 
-createGrid (value);
+
+//starter value for create grid --> 16x16
+createGrid (16);
+
+btnSubmit.addEventListener('click', verifyGrid);
+
+
+function verifyGrid( ) {
+  let userInput = prompt("Please enter a number between 2 - 99");
+  if (userInput < 2 || userInput > 99 ){
+    verifyGrid( );
+    console.log('userInput works');
+    
+  }
+  else {
+    containerDiv.innerHTML= "";
+    createGrid (userInput);
+    console.log('reset works!');
+  }
+  return userInput;
+}
 
 
 
+function changeColor ( ){
+  document.querySelectorAll('.column').style.color = "black";
+}
+//function to allow grid cells to change color
+function draw ( ) {
+  let columns = document.querySelectorAll('.column');
+  columns.forEach((column) => {
+  console.log('function draw works!');
+    column.addEventListener('dragenter', () => {
+      column.style.background = color;
+      column.style.opacity = '1';
+    });
+    column.addEventListener('mouseover', () => {
+      column.style.background = color;
+      column.style.opacity = '1';
+    })
 
+
+    });
+  }   
+
+//option button actions
+ btnBlack.addEventListener('click', ( ) => {
+    draw ();
+    color = 'black';
+ });
+
+ btnRb.addEventListener('click', ( ) => {
+    draw();
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    color = "#" + randomColor;
+    console.log(randomColor);
+ });
+
+ btnClear.addEventListener('click', clearGrid);
+ 
+//  () => {
+//   draw();
+//   color = 'white';
+
+//  });
+
+draw ( );
+
+function clearGrid( ) {
+  columns.forEach((column) => {
+    column.style.background = color;
+    color = "";
+  });
+};
