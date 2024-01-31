@@ -1,4 +1,5 @@
 const containerDiv = document.querySelector('.container')
+let column = document.querySelector('.column');
 let columns = document.querySelectorAll('.column');
 
 //create Variabe that links to 'body' of html 
@@ -54,27 +55,22 @@ createGrid (16);
 
 btnSubmit.addEventListener('click', verifyGrid);
 
-
+//error checks input. Causes loop where you cannot cancel LOL
 function verifyGrid( ) {
   let userInput = prompt("Please enter a number between 2 - 99");
   if (userInput < 2 || userInput > 99 ){
     verifyGrid( );
     console.log('userInput works');
-    
+    return userInput;
   }
   else {
     containerDiv.innerHTML= "";
     createGrid (userInput);
     console.log('reset works!');
   }
-  return userInput;
 }
 
 
-
-function changeColor ( ){
-  document.querySelectorAll('.column').style.color = "black";
-}
 //function to allow grid cells to change color
 function draw ( ) {
   let columns = document.querySelectorAll('.column');
@@ -93,6 +89,14 @@ function draw ( ) {
     });
   }   
 
+  //functions as an eraser not as clear function! need to fix 
+  // function clearGrid( ) {
+  //     draw ()
+  //     color = "";
+  //     console.log('clearGrid Works!')
+  // };
+
+
 //option button actions
  btnBlack.addEventListener('click', ( ) => {
     draw ();
@@ -106,19 +110,27 @@ function draw ( ) {
     console.log(randomColor);
  });
 
- btnClear.addEventListener('click', clearGrid);
- 
-//  () => {
-//   draw();
-//   color = 'white';
+ //Function clear! clears instantly + resets color
+ btnClear.addEventListener('click', () => {
+  const columns = document.querySelectorAll('.column');
+  columns.forEach((column) => {
+      column.style.background='none';
+      column.style.opacity='1'; 
+      color = 'none';
+    // draw ( );
+    // color = 'none';
+    // });
 
-//  });
+//DOES NOT WORK....FIGURE OUT 
+  });
+}); 
+
 
 draw ( );
 
-function clearGrid( ) {
-  columns.forEach((column) => {
-    column.style.background = color;
-    color = "";
-  });
-};
+
+/*1/27/24 Steps Left to complete project
+1. btnCLear - needs to clear grid instantly. work on clearGrid function
+2. btnRB - It does pick a random clolor but needs to be adjusted to change color per 'cell'
+3. Looping during prompt where you cannot cancel without inputting a value. 
+4. CSS to makes thisngs pretty.*/
