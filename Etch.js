@@ -53,6 +53,7 @@ function createGrid (value) {
 //starter value for create grid --> 16x16
 createGrid (16);
 
+//choose Grid Size
 btnSubmit.addEventListener('click', verifyGrid);
 
 //error checks input. Causes loop where you cannot cancel LOL
@@ -77,12 +78,13 @@ function draw ( ) {
   columns.forEach((column) => {
   console.log('function draw works!');
     column.addEventListener('dragenter', () => {
-      column.style.background = color;
       column.style.opacity = '1';
+      console.log("dragenter works")
     });
     column.addEventListener('mouseover', () => {
       column.style.background = color;
       column.style.opacity = '1';
+      console.log("moueover")
     })
 
 
@@ -97,18 +99,30 @@ function draw ( ) {
   // };
 
 
-//option button actions
+//Black Button
  btnBlack.addEventListener('click', ( ) => {
     draw ();
     color = 'black';
  });
 
+ //Rainbow Color button
  btnRb.addEventListener('click', ( ) => {
     draw();
-    let randomColor = Math.floor(Math.random()*16777215).toString(16);
-    color = "#" + randomColor;
-    console.log(randomColor);
- });
+     let randomColor = Math.floor(Math.random()*16777215).toString(16);
+      color = "#" + randomColor;
+      console.log("color");
+      // column.style.background='color';
+      console.log("column.style works)")
+      // column.style.opacity='1'; 
+      
+    
+    // // let columns = document.querySelectorAll('.column');
+    // columns.addEventListener('mouseover', () => {
+    //     let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    //     color = "#" + randomColor;
+    });
+
+    
 
  //Function clear! clears instantly + resets color
  btnClear.addEventListener('click', () => {
@@ -117,11 +131,6 @@ function draw ( ) {
       column.style.background='none';
       column.style.opacity='1'; 
       color = 'none';
-    // draw ( );
-    // color = 'none';
-    // });
-
-//DOES NOT WORK....FIGURE OUT 
   });
 }); 
 
@@ -130,7 +139,7 @@ draw ( );
 
 
 /*1/27/24 Steps Left to complete project
-1. btnCLear - needs to clear grid instantly. work on clearGrid function
+DONE - 1. btnCLear - needs to clear grid instantly. work on clearGrid function--- 
 2. btnRB - It does pick a random clolor but needs to be adjusted to change color per 'cell'
 3. Looping during prompt where you cannot cancel without inputting a value. 
 4. CSS to makes thisngs pretty.*/
