@@ -1,6 +1,5 @@
 const containerDiv = document.querySelector('.container')
-let column = document.querySelector('.column');
-let columns = document.querySelectorAll('.column');
+const columns = document.querySelectorAll('.column');
 
 //create Variabe that links to 'body' of html 
 const body = document.querySelector('body');
@@ -23,14 +22,17 @@ body.appendChild(buttons);
 //create button options
 const btnBlack = document.createElement('button');
 btnBlack.textContent = "Black";
+buttons.classList.add('buttons');
 buttons.appendChild(btnBlack);
 
 const btnRb = document.createElement('button');
 btnRb.textContent = "Rainbow";
+buttons.classList.add('buttons');
 buttons.appendChild(btnRb);
 
 const btnClear = document.createElement('button');
 btnClear.textContent = "Clear";
+buttons.classList.add('buttons');
 buttons.appendChild(btnClear);
 
 
@@ -68,6 +70,7 @@ function verifyGrid( ) {
     containerDiv.innerHTML= "";
     createGrid (userInput);
     console.log('reset works!');
+    draw();
   }
 }
 
@@ -78,6 +81,7 @@ function draw ( ) {
   columns.forEach((column) => {
   console.log('function draw works!');
     column.addEventListener('dragenter', () => {
+      column.style.background = color;
       column.style.opacity = '1';
       console.log("dragenter works")
     });
@@ -101,28 +105,31 @@ function draw ( ) {
 
 //Black Button
  btnBlack.addEventListener('click', ( ) => {
-    draw ();
-    color = 'black';
+  let columns = document.querySelectorAll('.column');
+  columns.forEach((column) => {  
+    column.addEventListener('mouseover', () => {
+    //column.style.backgroundColor='none'; clears entire grid
+    color = "black";
+    console.log("btnBlack works");
  });
+ });
+});
 
- //Rainbow Color button
- btnRb.addEventListener('click', ( ) => {
-    draw();
-     let randomColor = Math.floor(Math.random()*16777215).toString(16);
-      color = "#" + randomColor;
-      console.log("color");
-      // column.style.background='color';
-      console.log("column.style works)")
-      // column.style.opacity='1'; 
-      
-    
-    // // let columns = document.querySelectorAll('.column');
-    // columns.addEventListener('mouseover', () => {
-    //     let randomColor = Math.floor(Math.random()*16777215).toString(16);
-    //     color = "#" + randomColor;
+  //Rainbow Color button
+  btnRb.addEventListener('click', function () {
+    const columns = document.querySelectorAll('.column');  
+    columns.forEach((column) => {  
+    column.addEventListener('mouseover', () => {
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        color = "#" + randomColor;
+        console.log("color");
+      });
+      });
+
     });
+    // color = "none";
+   
 
-    
 
  //Function clear! clears instantly + resets color
  btnClear.addEventListener('click', () => {
@@ -140,6 +147,6 @@ draw ( );
 
 /*1/27/24 Steps Left to complete project
 DONE - 1. btnCLear - needs to clear grid instantly. work on clearGrid function--- 
-2. btnRB - It does pick a random clolor but needs to be adjusted to change color per 'cell'
+DONE - 2. btnRB - It does pick a random clolor but needs to be adjusted to change color per 'cell'
 3. Looping during prompt where you cannot cancel without inputting a value. 
 4. CSS to makes thisngs pretty.*/
