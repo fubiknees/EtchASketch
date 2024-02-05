@@ -1,9 +1,12 @@
-# Etch A Sketch <img src ="https://ccweb.imgix.net/https%3A%2F%2Fwww.classcentral.com%2Fimages%2Flogos%2Fproviders%2Fthe-odin-project-hz.png?auto=format&ixlib=php-4.1.0&s=feaa8845dc8a3dee609e492cdd0759d8" align = "right" width ="480" height = "148">
+# Etch A Sketch <img src ="https://ccweb.imgix.net/https%3A%2F%2Fwww.classcentral.com%2Fimages%2Flogos%2Fproviders%2Fthe-odin-project-hz.png?auto=format&ixlib=php-4.1.0&s=feaa8845dc8a3dee609e492cdd0759d8" align = "center" width ="150" height = "46">
 
 ## Goal 
 
 
-Focus on mastering DOM manipulation to build an interactive [**Etch A Sketch**](https://www.theodinproject.com/assets/icons/odin-icon-a34029cd84a741be4da27758dafd7d7ac3729021adea3e0701e310d91e5c1d04.svg) with options to change grid size via prompt, and provide black and rainbow color selections using **HTML**, **CSS**, & **Javascript**.
+Focus on mastering DOM manipulation to build an interactive [**Etch A Sketch**](https://en.wikipedia.org/wiki/Etch_A_Sketch) with options to change grid size via prompt, & provide black and rainbow color selections using **HTML**, **CSS**, & **Javascript**.
+<p align="center">
+  <img src = "https://github.com/fubiknees/EtchASketch/assets/85858509/f11f7144-5793-4e2d-804d-b9876671ac71" width = "770">
+</p>
 
 ## Assignment Details
 
