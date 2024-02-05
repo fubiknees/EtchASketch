@@ -9,7 +9,7 @@ const header = document.createElement('div');
 header.classList.add('header');
 body.appendChild(header);
 
-//Create Submit button to finalize select size input
+//Create Submit button to finalize size input
 const btnSubmit = document.createElement('button')
 btnSubmit.textContent = "Change Grid Size";
 header.appendChild(btnSubmit);
@@ -55,16 +55,21 @@ function createGrid (value) {
 //starter value for create grid --> 16x16
 createGrid (16);
 
-//choose Grid Size
+//Change Grid Size - action
 btnSubmit.addEventListener('click', verifyGrid);
 
 //error checks input. Causes loop where you cannot cancel LOL
 function verifyGrid( ) {
   let userInput = prompt("Please enter a number between 2 - 99");
-  if (userInput < 2 || userInput > 99 ){
+  if (userInput < 2 || userInput > 99 || isNaN(userInput)){
     verifyGrid( );
     console.log('userInput works');
     return userInput;
+  }
+  else if(userInput == "") {
+    userInput = null;
+    console.log("null works");
+    return;
   }
   else {
     containerDiv.innerHTML= "";
@@ -95,20 +100,12 @@ function draw ( ) {
     });
   }   
 
-  //functions as an eraser not as clear function! need to fix 
-  // function clearGrid( ) {
-  //     draw ()
-  //     color = "";
-  //     console.log('clearGrid Works!')
-  // };
-
 
 //Black Button
  btnBlack.addEventListener('click', ( ) => {
   let columns = document.querySelectorAll('.column');
   columns.forEach((column) => {  
     column.addEventListener('mouseover', () => {
-    //column.style.backgroundColor='none'; clears entire grid
     color = "black";
     console.log("btnBlack works");
  });
@@ -127,7 +124,6 @@ function draw ( ) {
       });
 
     });
-    // color = "none";
    
 
 
@@ -148,5 +144,5 @@ draw ( );
 /*1/27/24 Steps Left to complete project
 DONE - 1. btnCLear - needs to clear grid instantly. work on clearGrid function--- 
 DONE - 2. btnRB - It does pick a random clolor but needs to be adjusted to change color per 'cell'
-3. Looping during prompt where you cannot cancel without inputting a value. 
-4. CSS to makes thisngs pretty.*/
+3. Looping during prompt where you cannot cancel without inputting a value.
+DONE - 4. CSS to makes thisngs pretty.*/
