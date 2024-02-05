@@ -1,4 +1,4 @@
-# EtchASketch <img src ="https://www.theodinproject.com/assets/icons/odin-icon-a34029cd84a741be4da27758dafd7d7ac3729021adea3e0701e310d91e5c1d04.svg" align = "left" width ="10" height = "10">
+# EtchASketch <img src ="https://ccweb.imgix.net/https%3A%2F%2Fwww.classcentral.com%2Fimages%2Flogos%2Fproviders%2Fthe-odin-project-hz.png?auto=format&ixlib=php-4.1.0&s=feaa8845dc8a3dee609e492cdd0759d8" align = "right" width ="10" height = "10">
 
 # GOAL 
 Focus on mastering DOM manipulation to build an interactive [**Etch A Sketch**](https://www.theodinproject.com/assets/icons/odin-icon-a34029cd84a741be4da27758dafd7d7ac3729021adea3e0701e310d91e5c1d04.svg) using HTML, CSS, & JS.
